@@ -1,24 +1,15 @@
 public class myVisitor extends arithmeticBaseVisitor<Integer>{
     @Override
     public Integer visitFile_(arithmeticParser.File_Context ctx) {
-//        System.out.println("visitFile_: " + visit(ctx.equation(0)));
         return visit(ctx.expression(0));
-
-//        return super.visitFile_(ctx);
     }
 
-//    @Override
-//    public Integer visitEquation(arithmeticParser.EquationContext ctx) {
-////        System.out.println("visitEqation_0: " + visit(ctx.expression(0)));
-////        System.out.println("visitEqation_1: " + visit(ctx.expression(1)));
-//
-////        if (visit(ctx.expression(0)) == visit(ctx.expression(1))) {
-////            boolean result = true;
-////            return result.compare(result, true);
-////
-////        }
-//        return visit(ctx.expression(0));
-//    }
+
+    @Override
+    public Integer visitParen(arithmeticParser.ParenContext ctx) {
+//        System.out.println("Nawiasy: " + visit(ctx.expression()));
+        return visit(ctx.expression());
+    }
 
     @Override
     public Integer visitPlus_min(arithmeticParser.Plus_minContext ctx) {
@@ -37,11 +28,9 @@ public class myVisitor extends arithmeticBaseVisitor<Integer>{
     @Override
     public Integer visitPow(arithmeticParser.PowContext ctx) {
         Integer result = 1;
-//        System.out.println("Pierwszy: " + visit(ctx.expression(0)) + " Drugi: " + visit(ctx.expression(1)));
         for (int i = 0; i < visit(ctx.expression(1)); i++) {
             result = result * visit(ctx.expression(0));
-//            System.out.println("Rezultat cząstkowy " + i + ": " + result);
-            
+
         }
         return result;
     }
@@ -67,9 +56,8 @@ public class myVisitor extends arithmeticBaseVisitor<Integer>{
 
     @Override
     public Integer visitScientific(arithmeticParser.ScientificContext ctx) {
-//        System.out.println("Scientifi number: " + Integer.parseInt(ctx.SCIENTIFIC_NUMBER().getText()));
+//        System.out.println(Integer.parseInt(ctx.SCIENTIFIC_NUMBER().getText()));
         return Integer.parseInt(ctx.SCIENTIFIC_NUMBER().getText());
-//        return super.visitScientific(ctx);
     }
 
     @Override
