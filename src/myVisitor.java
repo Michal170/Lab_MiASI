@@ -1,21 +1,50 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class myVisitor extends arithmeticBaseVisitor<Integer>{
+
+    Map<String, Integer> memory = new HashMap<String, Integer>();
+
     @Override
-    public Integer visitFile_(arithmeticParser.File_Context ctx) {
-        return visit(ctx.expression(0));
+    public Integer visitAssign(arithmeticParser.AssignContext ctx) {
+        String id = ctx.ID().getText();
+        int value = visit(ctx.expression());
+//        System.out.println("visitAssign value: " + value + " id: " + id);
+        memory.put(id, value);
+        return value;
     }
 
+    @Override
+    public Integer visitId(arithmeticParser.IdContext ctx) {
+        String id = ctx.ID().getText();
+        return memory.get(id);
+    }
 
     @Override
     public Integer visitParen(arithmeticParser.ParenContext ctx) {
-//        System.out.println("Nawiasy: " + visit(ctx.expression()));
         return visit(ctx.expression());
     }
 
     @Override
+    public Integer visitInt(arithmeticParser.IntContext ctx) {
+        return Integer.valueOf(ctx.INT().getText());
+    }
+
+    @Override
+    public Integer visitPrintExpr(arithmeticParser.PrintExprContext ctx) {
+        Integer value = visit(ctx.expression());
+        System.out.println("Wynik: " + value);
+        return value;
+    }
+
+
+    @Override
     public Integer visitPlus_min(arithmeticParser.Plus_minContext ctx) {
         Integer result = 0;
+//        System.out.println("VisitPlus");
         switch (ctx.op.getType()){
             case arithmeticLexer.PLUS -> {
+                System.out.println(visit(ctx.expression(0)));
                 result = visit(ctx.expression(0)) + visit(ctx.expression(1));
             }
             case arithmeticLexer.MINUS -> {
@@ -49,21 +78,6 @@ public class myVisitor extends arithmeticBaseVisitor<Integer>{
         return result;
     }
 
-    @Override
-    public Integer visitAtom(arithmeticParser.AtomContext ctx) {
-        return super.visitAtom(ctx);
-    }
-
-    @Override
-    public Integer visitScientific(arithmeticParser.ScientificContext ctx) {
-//        System.out.println(Integer.parseInt(ctx.SCIENTIFIC_NUMBER().getText()));
-        return Integer.parseInt(ctx.SCIENTIFIC_NUMBER().getText());
-    }
-
-    @Override
-    public Integer visitVariable(arithmeticParser.VariableContext ctx) {
-        return super.visitVariable(ctx);
-    }
 
     @Override
     public Integer visitRelop(arithmeticParser.RelopContext ctx) {

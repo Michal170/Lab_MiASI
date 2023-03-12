@@ -16,6 +16,27 @@ public interface arithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFile_(arithmeticParser.File_Context ctx);
 	/**
+	 * Visit a parse tree produced by the {@code printExpr}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintExpr(arithmeticParser.PrintExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code assign}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssign(arithmeticParser.AssignContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code blank}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlank(arithmeticParser.BlankContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code plus_min}
 	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
@@ -29,13 +50,6 @@ public interface arithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitParen(arithmeticParser.ParenContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code plmn_atom}
-	 * labeled alternative in {@link arithmeticParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPlmn_atom(arithmeticParser.Plmn_atomContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code pow}
 	 * labeled alternative in {@link arithmeticParser#expression}.
@@ -51,23 +65,19 @@ public interface arithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMul_div(arithmeticParser.Mul_divContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link arithmeticParser#atom}.
+	 * Visit a parse tree produced by the {@code id}
+	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAtom(arithmeticParser.AtomContext ctx);
+	T visitId(arithmeticParser.IdContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link arithmeticParser#scientific}.
+	 * Visit a parse tree produced by the {@code int}
+	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitScientific(arithmeticParser.ScientificContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link arithmeticParser#variable}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVariable(arithmeticParser.VariableContext ctx);
+	T visitInt(arithmeticParser.IntContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link arithmeticParser#relop}.
 	 * @param ctx the parse tree

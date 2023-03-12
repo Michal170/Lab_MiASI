@@ -17,6 +17,42 @@ public interface arithmeticListener extends ParseTreeListener {
 	 */
 	void exitFile_(arithmeticParser.File_Context ctx);
 	/**
+	 * Enter a parse tree produced by the {@code printExpr}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrintExpr(arithmeticParser.PrintExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code printExpr}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrintExpr(arithmeticParser.PrintExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code assign}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssign(arithmeticParser.AssignContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code assign}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssign(arithmeticParser.AssignContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code blank}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlank(arithmeticParser.BlankContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code blank}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlank(arithmeticParser.BlankContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code plus_min}
 	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
@@ -40,18 +76,6 @@ public interface arithmeticListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitParen(arithmeticParser.ParenContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code plmn_atom}
-	 * labeled alternative in {@link arithmeticParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterPlmn_atom(arithmeticParser.Plmn_atomContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code plmn_atom}
-	 * labeled alternative in {@link arithmeticParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitPlmn_atom(arithmeticParser.Plmn_atomContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code pow}
 	 * labeled alternative in {@link arithmeticParser#expression}.
@@ -77,35 +101,29 @@ public interface arithmeticListener extends ParseTreeListener {
 	 */
 	void exitMul_div(arithmeticParser.Mul_divContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link arithmeticParser#atom}.
+	 * Enter a parse tree produced by the {@code id}
+	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterAtom(arithmeticParser.AtomContext ctx);
+	void enterId(arithmeticParser.IdContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link arithmeticParser#atom}.
+	 * Exit a parse tree produced by the {@code id}
+	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitAtom(arithmeticParser.AtomContext ctx);
+	void exitId(arithmeticParser.IdContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link arithmeticParser#scientific}.
+	 * Enter a parse tree produced by the {@code int}
+	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterScientific(arithmeticParser.ScientificContext ctx);
+	void enterInt(arithmeticParser.IntContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link arithmeticParser#scientific}.
+	 * Exit a parse tree produced by the {@code int}
+	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitScientific(arithmeticParser.ScientificContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link arithmeticParser#variable}.
-	 * @param ctx the parse tree
-	 */
-	void enterVariable(arithmeticParser.VariableContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link arithmeticParser#variable}.
-	 * @param ctx the parse tree
-	 */
-	void exitVariable(arithmeticParser.VariableContext ctx);
+	void exitInt(arithmeticParser.IntContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link arithmeticParser#relop}.
 	 * @param ctx the parse tree

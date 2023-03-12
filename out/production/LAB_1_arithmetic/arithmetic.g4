@@ -1,32 +1,38 @@
 grammar arithmetic;
 
-file_ : expression*  EOF;
+file_ : stat*  EOF;
 
-//equation
-//   : expression*
-//   : expression relop expression
-//   ;
+stat:   expression NEWLINE                      # printExpr
+    |   ID EQ expression             # assign
+//    |   ID EQ expression NEWLINE                # assign
+//    |   expression                              # expr
+    |   NEWLINE                                 # blank
+    ;
 
 expression
-   :  expression  op=POW expression # pow
-   |  expression  op=(TIMES | DIV)  expression #mul_div
-   |  expression  op=(PLUS | MINUS) expression #plus_min
-   |  LPAREN expression RPAREN #paren
-   |  (PLUS | MINUS)* atom #plmn_atom
+   :  expression  op=POW expression             # pow
+   |  expression  op=(TIMES | DIV)  expression  # mul_div
+   |  expression  op=(PLUS | MINUS) expression  # plus_min
+   |  INT                                       # int
+   |  ID                                        # id
+   |  LPAREN expression RPAREN                  # paren
+//   |  (PLUS | MINUS)* atom                      #plmn_atom
    ;
 
-atom
-   : scientific
-   | variable
-   ;
+//atom
+//   : scientific
+//   | variable
+//   | INT
+//   | ID
+//   ;
 
-scientific
-   : SCIENTIFIC_NUMBER
-   ;
-
-variable
-   : VARIABLE
-   ;
+//scientific
+//   : SCIENTIFIC_NUMBER
+//   ;
+//
+//variable
+//   : VARIABLE
+//   ;
 
 relop
    : EQ
@@ -35,9 +41,9 @@ relop
    ;
 
 
-VARIABLE
-   : VALID_ID_START VALID_ID_CHAR*
-   ;
+//VARIABLE
+//   : VALID_ID_START VALID_ID_CHAR*
+//   ;
 
 
 fragment VALID_ID_START
@@ -50,9 +56,9 @@ fragment VALID_ID_CHAR
    ;
 
 //The NUMBER part gets its potential sign from "(PLUS | MINUS)* atom" in the expression rule
-SCIENTIFIC_NUMBER
-   : NUMBER (E SIGN? UNSIGNED_INTEGER)?
-   ;
+//SCIENTIFIC_NUMBER
+//   : NUMBER (E SIGN? UNSIGNED_INTEGER)?
+//   ;
 
 fragment NUMBER
    : ('0' .. '9') + ('.' ('0' .. '9') +)?
@@ -97,6 +103,9 @@ TIMES
    : '*'
    ;
 
+ID
+    :   [a-zA-Z]+
+    ;
 
 DIV
    : '/'
@@ -127,7 +136,13 @@ POW
    : '^'
    ;
 
+NEWLINE:'\r'? '\n' ;     // return newlines to parser (is end-statement signal)
+
+INT
+    :
+    [0-9]+
+    ;
 
 WS
-   : [ \r\n\t] + -> skip
+   : [ \t] + -> skip
    ;
