@@ -51,6 +51,13 @@ public interface arithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParen(arithmeticParser.ParenContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code const}
+	 * labeled alternative in {@link arithmeticParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConst(arithmeticParser.ConstContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code pow}
 	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
@@ -78,6 +85,18 @@ public interface arithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitInt(arithmeticParser.IntContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link arithmeticParser#atom}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAtom(arithmeticParser.AtomContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link arithmeticParser#constant}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstant(arithmeticParser.ConstantContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link arithmeticParser#relop}.
 	 * @param ctx the parse tree

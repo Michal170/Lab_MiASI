@@ -38,13 +38,14 @@ public class myVisitor extends arithmeticBaseVisitor<Integer>{
     }
 
 
+
     @Override
     public Integer visitPlus_min(arithmeticParser.Plus_minContext ctx) {
         Integer result = 0;
 //        System.out.println("VisitPlus");
         switch (ctx.op.getType()){
             case arithmeticLexer.PLUS -> {
-                System.out.println(visit(ctx.expression(0)));
+//                System.out.println(visit(ctx.expression(0)));
                 result = visit(ctx.expression(0)) + visit(ctx.expression(1));
             }
             case arithmeticLexer.MINUS -> {
@@ -82,5 +83,11 @@ public class myVisitor extends arithmeticBaseVisitor<Integer>{
     @Override
     public Integer visitRelop(arithmeticParser.RelopContext ctx) {
         return super.visitRelop(ctx);
+    }
+
+    @Override
+    public Integer visitConst(arithmeticParser.ConstContext ctx) {
+        int result = 3;
+        return result;
     }
 }

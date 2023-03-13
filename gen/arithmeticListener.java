@@ -77,6 +77,18 @@ public interface arithmeticListener extends ParseTreeListener {
 	 */
 	void exitParen(arithmeticParser.ParenContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code const}
+	 * labeled alternative in {@link arithmeticParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterConst(arithmeticParser.ConstContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code const}
+	 * labeled alternative in {@link arithmeticParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitConst(arithmeticParser.ConstContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code pow}
 	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
@@ -124,6 +136,26 @@ public interface arithmeticListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInt(arithmeticParser.IntContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link arithmeticParser#atom}.
+	 * @param ctx the parse tree
+	 */
+	void enterAtom(arithmeticParser.AtomContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link arithmeticParser#atom}.
+	 * @param ctx the parse tree
+	 */
+	void exitAtom(arithmeticParser.AtomContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link arithmeticParser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstant(arithmeticParser.ConstantContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link arithmeticParser#constant}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstant(arithmeticParser.ConstantContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link arithmeticParser#relop}.
 	 * @param ctx the parse tree

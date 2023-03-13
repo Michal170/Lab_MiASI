@@ -3,9 +3,7 @@ grammar arithmetic;
 file_ : stat*  EOF;
 
 stat:   expression NEWLINE                      # printExpr
-    |   ID EQ expression             # assign
-//    |   ID EQ expression NEWLINE                # assign
-//    |   expression                              # expr
+    |   ID EQ expression NEWLINE                # assign
     |   NEWLINE                                 # blank
     ;
 
@@ -16,16 +14,21 @@ expression
    |  INT                                       # int
    |  ID                                        # id
    |  LPAREN expression RPAREN                  # paren
+   |  atom                                      # const
 //   |  (PLUS | MINUS)* atom                      #plmn_atom
    ;
 
-//atom
+atom
 //   : scientific
 //   | variable
+     : constant
 //   | INT
 //   | ID
-//   ;
+     ;
 
+constant
+    : PI
+    ;
 //scientific
 //   : SCIENTIFIC_NUMBER
 //   ;
@@ -44,6 +47,10 @@ relop
 //VARIABLE
 //   : VALID_ID_START VALID_ID_CHAR*
 //   ;
+
+PI
+   : 'pi'
+   ;
 
 
 fragment VALID_ID_START
@@ -136,7 +143,9 @@ POW
    : '^'
    ;
 
-NEWLINE:'\r'? '\n' ;     // return newlines to parser (is end-statement signal)
+NEWLINE:
+    '\r'? '\n'
+    ;     // return newlines to parser (is end-statement signal)
 
 INT
     :
