@@ -93,6 +93,13 @@ public interface arithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInt(arithmeticParser.IntContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code epr_relop}
+	 * labeled alternative in {@link arithmeticParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEpr_relop(arithmeticParser.Epr_relopContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link arithmeticParser#atom}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

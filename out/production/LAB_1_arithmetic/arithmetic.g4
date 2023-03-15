@@ -13,6 +13,7 @@ expression
    :  expression  op=POW expression             # pow
    |  expression  op=(TIMES | DIV)  expression  # mul_div
    |  expression  op=(PLUS | MINUS) expression  # plus_min
+   |  expression relop expression               # expr_relop
    |  INT                                       # int
    |  ID                                        # id
    |  LPAREN expression RPAREN                  # paren

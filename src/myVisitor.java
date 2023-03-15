@@ -15,8 +15,36 @@ public class myVisitor extends arithmeticBaseVisitor<Integer>{
 
 
     @Override
+    public Integer visitEpr_relop(arithmeticParser.Epr_relopContext ctx) {
+        Integer result = 0;
+        switch (visit(ctx.relop())) {
+            case 0:
+                if (visit(ctx.expression(0))==visit(ctx.expression(1))) {
+                    result = 0;
+                } else {
+                    result = 1;
+                }
+            case 1:
+                if (visit(ctx.expression(0))>visit(ctx.expression(1))) {
+                    result = 0;
+                } else {
+                    result = 1;
+                }
+            case 2:
+                if (visit(ctx.expression(0))<visit(ctx.expression(1))) {
+                    result = 0;
+                } else {
+                    result = 1;
+                }
+        }
+        return result;
+
+    }
+
+    @Override
     public Integer visitIf_statment(arithmeticParser.If_statmentContext ctx) {
         Integer result = 0;
+
         if (visit(ctx.cond)!=0){
             result = visit(ctx.then);
         }
@@ -105,7 +133,11 @@ public class myVisitor extends arithmeticBaseVisitor<Integer>{
 
     @Override
     public Integer visitRelop(arithmeticParser.RelopContext ctx) {
-        return super.visitRelop(ctx);
+        int result = 0;
+        if (ctx.EQ() != null ) result = 0;
+        if (ctx.GT() != null ) result = 1;
+        if (ctx.LT() != null ) result = 2;
+        return result;
     }
 
     @Override

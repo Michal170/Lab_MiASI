@@ -149,6 +149,18 @@ public interface arithmeticListener extends ParseTreeListener {
 	 */
 	void exitInt(arithmeticParser.IntContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code epr_relop}
+	 * labeled alternative in {@link arithmeticParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterEpr_relop(arithmeticParser.Epr_relopContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code epr_relop}
+	 * labeled alternative in {@link arithmeticParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitEpr_relop(arithmeticParser.Epr_relopContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link arithmeticParser#atom}.
 	 * @param ctx the parse tree
 	 */
