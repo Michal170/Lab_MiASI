@@ -28,6 +28,18 @@ public class arithmeticBaseListener implements arithmeticListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIf_statment(arithmeticParser.If_statmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIf_statment(arithmeticParser.If_statmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrintExpr(arithmeticParser.PrintExprContext ctx) { }
 	/**
 	 * {@inheritDoc}

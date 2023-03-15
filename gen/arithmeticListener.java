@@ -17,6 +17,18 @@ public interface arithmeticListener extends ParseTreeListener {
 	 */
 	void exitFile_(arithmeticParser.File_Context ctx);
 	/**
+	 * Enter a parse tree produced by the {@code if_statment}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void enterIf_statment(arithmeticParser.If_statmentContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code if_statment}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 */
+	void exitIf_statment(arithmeticParser.If_statmentContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code printExpr}
 	 * labeled alternative in {@link arithmeticParser#stat}.
 	 * @param ctx the parse tree

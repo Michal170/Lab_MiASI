@@ -5,6 +5,29 @@ public class myVisitor extends arithmeticBaseVisitor<Integer>{
 
     Map<String, Integer> memory = new HashMap<String, Integer>();
 
+//    Integerresult = 0
+//    if (visit(ctx.cond)!=0){
+//        result = visit(ctx.then);
+//    }
+//    else{
+//        if(ctx.else_!= null)
+//    }
+
+
+    @Override
+    public Integer visitIf_statment(arithmeticParser.If_statmentContext ctx) {
+        Integer result = 0;
+        if (visit(ctx.cond)!=0){
+            result = visit(ctx.then);
+        }
+        else {
+            if (ctx.else_!=null){
+                result = visit(ctx.else_);
+            }
+        }
+        return result;
+    }
+
     @Override
     public Integer visitAssign(arithmeticParser.AssignContext ctx) {
         String id = ctx.ID().getText();

@@ -2,8 +2,10 @@ grammar arithmetic;
 
 file_ : stat*  EOF;
 
-stat:   expression NEWLINE                      # printExpr
-    |   ID EQ expression NEWLINE                # assign
+stat:   IF '(' cond=expression ')' '(' then=stat ')'  ('else' else=stat+?)?         # if_statment
+//    |   expression NEWLINE                      # printExpr
+    |   expression                              # printExpr
+    |   ID relop expression NEWLINE             # assign
     |   NEWLINE                                 # blank
     ;
 
@@ -17,6 +19,10 @@ expression
    |  atom                                      # const
 //   |  (PLUS | MINUS)* atom                      #plmn_atom
    ;
+
+//if_stat
+//    :IF stat stat*
+//    ;
 
 atom
 //   : scientific
@@ -85,6 +91,9 @@ fragment SIGN
    : ('+' | '-')
    ;
 
+IF
+   : 'if'
+   ;
 
 LPAREN
    : '('

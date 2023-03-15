@@ -5,7 +5,11 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // create a CharStream that reads from standard input
         CharStream input = CharStreams.fromStream(System.in);
-
+//        CharStream inp = null;
+//        try {
+//            inp = CharStream.fromFileName();
+//        }
+//        inp = CharStream.fromFileName
         // create a lexer that feeds off of input CharStream
         arithmeticLexer lexer = new arithmeticLexer(input);
 

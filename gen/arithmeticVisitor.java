@@ -16,6 +16,13 @@ public interface arithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFile_(arithmeticParser.File_Context ctx);
 	/**
+	 * Visit a parse tree produced by the {@code if_statment}
+	 * labeled alternative in {@link arithmeticParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIf_statment(arithmeticParser.If_statmentContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code printExpr}
 	 * labeled alternative in {@link arithmeticParser#stat}.
 	 * @param ctx the parse tree
