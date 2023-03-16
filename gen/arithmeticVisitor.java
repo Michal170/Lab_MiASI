@@ -79,6 +79,13 @@ public interface arithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMul_div(arithmeticParser.Mul_divContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code expr_relop}
+	 * labeled alternative in {@link arithmeticParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr_relop(arithmeticParser.Expr_relopContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code id}
 	 * labeled alternative in {@link arithmeticParser#expression}.
 	 * @param ctx the parse tree
@@ -92,13 +99,6 @@ public interface arithmeticVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitInt(arithmeticParser.IntContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code epr_relop}
-	 * labeled alternative in {@link arithmeticParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEpr_relop(arithmeticParser.Epr_relopContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link arithmeticParser#atom}.
 	 * @param ctx the parse tree

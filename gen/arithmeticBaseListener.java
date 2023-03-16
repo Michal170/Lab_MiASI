@@ -136,6 +136,18 @@ public class arithmeticBaseListener implements arithmeticListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterExpr_relop(arithmeticParser.Expr_relopContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpr_relop(arithmeticParser.Expr_relopContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterId(arithmeticParser.IdContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -155,18 +167,6 @@ public class arithmeticBaseListener implements arithmeticListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInt(arithmeticParser.IntContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterEpr_relop(arithmeticParser.Epr_relopContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitEpr_relop(arithmeticParser.Epr_relopContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

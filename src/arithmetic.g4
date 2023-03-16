@@ -3,6 +3,7 @@ grammar arithmetic;
 file_ : stat*  EOF;
 
 stat:   IF '(' cond=expression ')' '(' then=stat ')'  ('else' else=stat+?)?         # if_statment
+//    | WHILE '(' cond=expression ')' '(' then=stat ')' # while_statement
 //    |   expression NEWLINE                      # printExpr
     |   expression                              # printExpr
     |   ID relop expression NEWLINE             # assign
@@ -94,6 +95,10 @@ fragment SIGN
 
 IF
    : 'if'
+   ;
+
+WHILE
+   : 'while'
    ;
 
 LPAREN
